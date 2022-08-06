@@ -1,6 +1,9 @@
 class DiscountsController < ApplicationController
-    before_action :find_merchant, only: [:index]
   def index
+    @merchant = Merchant.find(params[:merchant_id])
+  end
+
+  def show
     
   end
 end

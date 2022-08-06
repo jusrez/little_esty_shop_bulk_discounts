@@ -20,7 +20,7 @@ RSpec.describe 'Discounts Index' do
 
           click_link "Discounts"
 
-          expect(current_path).to eq("/merchant/#{@merchant.id/discounts}")
+          expect(current_path).to eq("/merchant/#{@merchant.id}/discounts")
 
           within "#discount-#{@discount_a.id}" do
             expect(page).to have_content("Percentage Discount: 20%")

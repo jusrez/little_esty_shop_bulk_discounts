@@ -1,0 +1,9 @@
+<%@merchant.discounts.each do |discount| %>
+<div id = "discount-<%= discount.id %>">
+<h4><%= link_to "Discount ##{discount.id}", "/merchant/#{@merchant.id}/discounts/#{discount.id}" %></h4>
+<ul>
+<li> Percentage Discount: <%= number_to_percentage(discount.percentage_discount, precision: 0) %></li>
+<li> Quantity Threshold: <%= discount.quantity_threshold %></li>
+</ul>
+</div>
+<% end %>
