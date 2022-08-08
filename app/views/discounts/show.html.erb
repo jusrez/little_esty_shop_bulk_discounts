@@ -1,0 +1,4 @@
+<h2>Discount #<%= @discount.id %> Information Page</h2>
+
+<p>Percentage Discount: <%= number_to_percentage(@discount.percentage_discount, precision: 0) %></p>
+<p>Quantity Threshold: <%= @discount.quantity_threshold %></p>
