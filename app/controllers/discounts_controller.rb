@@ -1,16 +1,29 @@
 class DiscountsController < ApplicationController
   before_action :find_merchant, only: [:index, :new]
-
+  before_action :find_discount, only: [:show, :edit, :update]
   def index
    
   end
 
   def show
-    @discount = Discount.find(params[:id])
+    
   end
 
   def new
 
+  end
+
+  def edit
+
+  end
+
+  def update
+    if @discount.update(discount_params)
+      redirect_to merchant_discount_path(@discount.merchant_id, @discount.id)
+    else
+      redirect_to edit_merchant_discount_path(@discount.merchant_id, @discount.id)
+      flash[:alert] = "Error: #{error_message(@discount.errors)}"
+    end
   end
 
   def destroy
@@ -31,11 +44,15 @@ class DiscountsController < ApplicationController
   private
 
   def discount_params
-    params.permit(:percentage_discount, :quantity_threshold, :merchant_id)
+    params.permit(:percentage_discount, :quantity_threshold)
   end
 
   def find_merchant
     @merchant = Merchant.find(params[:merchant_id])
+  end
+
+  def find_discount
+    @discount = Discount.find(params[:id])
   end
 
   def error_message(errors)
