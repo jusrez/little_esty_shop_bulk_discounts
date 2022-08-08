@@ -7,6 +7,6 @@
 <li> Percentage Discount: <%= number_to_percentage(discount.percentage_discount, precision: 0) %></li>
 <li> Quantity Threshold: <%= discount.quantity_threshold %></li>
 </ul>
-<%= link_to "Delete Discount", merchant_discount_path(@merchant.id, discount.id), method: :delete %>
+<p><%= button_to "Delete Discount", "/merchant/#{@merchant.id}/discounts/#{discount.id}", method: :delete %></p>
 </div>
 <% end %>
