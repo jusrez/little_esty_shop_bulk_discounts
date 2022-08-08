@@ -24,7 +24,6 @@ RSpec.describe 'Discount Create' do
 
           fill_in "Percentage Discount", with: "not a number"
           fill_in "Quantity Threshold", with: "also not a number"
-          fill_in "Merchant ID", with: "#{@merchant.id}"
           click_button 'Submit'
 
           expect(current_path).to eq("/merchant/#{@merchant.id}/discounts/new")
@@ -32,7 +31,6 @@ RSpec.describe 'Discount Create' do
           
           fill_in "Percentage Discount", with: 15
           fill_in "Quantity Threshold", with: 5
-          fill_in "Merchant ID", with: "#{@merchant.id}"
           click_button 'Submit'
 
           expect(current_path).to eq("/merchant/#{@merchant.id}/discounts")

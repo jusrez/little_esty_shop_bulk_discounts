@@ -14,12 +14,12 @@ class DiscountsController < ApplicationController
   end
 
   def destroy
-    @discount = Discount.find(params[:id]).destroy
-    redirect_to merchant_discounts_path(@discount.merchant_id)
+    Discount.find(params[:id]).destroy
+    redirect_to merchant_discounts_path
   end
 
   def create
-    discount = Discount.new(discount_params)
+    discount = Discount.new(percentage_discount: params[:percentage_discount], quantity_threshold: params[:quantity_threshold], merchant_id: params[:merchant_id])
     if discount.save
       redirect_to merchant_discounts_path(discount.merchant_id)
     else
