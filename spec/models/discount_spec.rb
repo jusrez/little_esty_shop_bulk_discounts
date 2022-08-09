@@ -5,4 +5,10 @@ RSpec.describe Discount, type: :model do
     it { should validate_numericality_of(:percentage_discount) }
     it { should validate_numericality_of(:quantity_threshold) }
   end
+
+  describe 'relationships' do
+    it { should belong_to(:merchant) }
+    it { should have_many(:items) }
+    it { should have_many(:invoice_items) }
+  end
 end
