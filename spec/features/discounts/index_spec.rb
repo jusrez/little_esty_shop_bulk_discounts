@@ -56,16 +56,24 @@ RSpec.describe 'Discounts Index' do
           within "#discount-#{@discount_b.id}" do
             expect(page).to have_button("Delete Discount")
           end
-
+          
           within "#discount-#{@discount_a.id}" do
             click_button "Delete Discount"
           end
            
           expect(current_path).to eq("/merchant/#{@merchant.id}/discounts")
           expect(page).to_not have_content("#{@discount_a.id}")
-          expect(page).to_not have_content("#{@discount_a.percentage_discount}")
-          expect(page).to_not have_content("#{@discount_a.quantity_threshold}")
-          
+          expect(page).to_not have_content("Percentage Discount: 20%")
+          expect(page).to_not have_content("Quantity Threshold: 10")
+        end
+
+        it 'will show a section with a header of upcoming holidays. In this section the name date of the next 3 upcoming US holidays are listed' do
+          visit merchant_discounts_path(@merchant)
+
+          expect(page).to have_content("Upcoming Holidays")
+          expect(page).to have_content("Labour Day: 2022-09-05")
+          expect(page).to have_content("Columbus Day: 2022-10-10")
+          expect(page).to have_content("Veterans Day: 2022-11-11") 
         end
       end
     end

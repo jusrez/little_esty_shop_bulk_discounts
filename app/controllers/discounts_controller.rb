@@ -1,8 +1,9 @@
 class DiscountsController < ApplicationController
   before_action :find_merchant, only: [:index, :new]
   before_action :find_discount, only: [:show, :edit, :update]
+
   def index
-   
+   @holidays = NagerSearch.new
   end
 
   def show
